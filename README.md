@@ -29,4 +29,4 @@ parking_lot_system/
 ├── models.py               # Vehicle (abstract), Car/Bus/Motorcycle, ParkingSpot, ParkingTicket
 ├── level.py                # Level class – manages spots on one floor
 ├── parking_lot.py          # Main ParkingLot class – coordinates everything
-└── main.py                 # Example usage & demo script (outside package)
+main.py                     # Example usage & demo script (outside package)
