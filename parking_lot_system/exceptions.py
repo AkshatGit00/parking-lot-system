@@ -13,3 +13,6 @@ class InvalidTicketException(ParkingException):
 
 class SpotNotFoundException(ParkingException):
     pass
+
+class VehicleAlreadyParkedException(ParkingException):
+    pass
