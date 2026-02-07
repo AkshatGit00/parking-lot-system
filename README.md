@@ -20,6 +20,7 @@ This project demonstrates core **Object-Oriented Programming** principles, type 
 - Type hints for better readability and static analysis
 
 ## Project Structure
+```python
 parking_lot_system/
 ├── init.py
 ├── config.py               # Fee rate, spot distribution percentages
@@ -28,4 +29,4 @@ parking_lot_system/
 ├── models.py               # Vehicle (abstract), Car/Bus/Motorcycle, ParkingSpot, ParkingTicket
 ├── level.py                # Level class – manages spots on one floor
 ├── parking_lot.py          # Main ParkingLot class – coordinates everything
-└── main.py                 # Example usage & demo script (outside package)
+main.py                     # Example usage & demo script (outside package)
