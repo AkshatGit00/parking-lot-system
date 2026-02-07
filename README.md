@@ -1,23 +1,24 @@
 # Parking Lot Management System
 
-A clean, modular, and extensible **Low-Level Design (LLD)** implementation of a multi-level parking lot system in Python.
-
-This project demonstrates core **Object-Oriented Programming** principles, type safety, exception handling, and clean architecture — commonly asked in system design / coding interviews.
+A clean, modular, and production-ready Low-Level Design (LLD) implementation of a **multi-level parking lot system** in Python.  
+Originally an in-memory OOP design, now enhanced with **SQLite persistence**, data integrity checks, and robust error handling — perfect for demonstrating full backend capabilities in coding interviews and software developer roles.
 
 ## Features
 
-- Multi-level parking lot with configurable number of levels and spots per level
-- Different **vehicle types**: Motorcycle, Car, Bus
-- Different **spot types**: Motorcycle, Compact, Large
-- Realistic **compatibility rules**:
-  - Motorcycle → fits in any spot
-  - Car → fits in Compact or Large
-  - Bus → fits only in Large
-- Time-based parking fee calculation (configurable hourly rate)
-- Ticket-based entry/exit system
-- Proper error handling with custom exceptions
-- Modular package structure following separation of concerns
-- Type hints for better readability and static analysis
+- Multi-level parking with configurable number of levels and spots per level
+- Supported vehicle types: Motorcycle, Car, Bus
+- Spot types: Motorcycle, Compact, Large
+- Vehicle-spot compatibility rules:
+  - Motorcycle → fits any spot
+  - Car → fits Compact or Large
+  - Bus → fits only Large (occupies 5 consecutive large spots in a row)
+- Ticket-based entry/exit system with unique ticket IDs
+- Time-based fee calculation (configurable hourly rate)
+- Custom exceptions for clear error handling (ParkingFull, InvalidTicket, SpotNotFound, VehicleAlreadyParked, etc.)
+- **Persistent storage** using SQLite — parking state survives program restarts
+- Duplicate parking prevention — same license plate cannot be parked twice without unparking
+- Modular, OOP/SOLID-compliant design with type hints and separation of concerns
+- Console demo script (`main.py`) showing park/unpark flows and edge cases
 
 ## Project Structure
 ```python
@@ -29,4 +30,16 @@ parking_lot_system/
 ├── models.py               # Vehicle (abstract), Car/Bus/Motorcycle, ParkingSpot, ParkingTicket
 ├── level.py                # Level class – manages spots on one floor
 ├── parking_lot.py          # Main ParkingLot class – coordinates everything
+├── db.py                   # SQLite database layer (init, load, save park/unpark)
 main.py                     # Example usage & demo script (outside package)
+```
+
+- `parking.db` — SQLite database file (auto-created on first run)
+
+## Technologies & Skills Demonstrated
+
+- **Language**: Python 3
+- **Core Concepts**: OOP, SOLID principles, Type Hints, Exception Handling, Encapsulation
+- **Persistence**: SQLite (serverless, lightweight)
+- **Data Integrity**: UNIQUE constraint on license_plate, explicit duplicate checks
+- **Tools**: Git, modular package structure
