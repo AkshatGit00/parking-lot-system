@@ -113,13 +113,18 @@ class ParkingLot:
         return f"Vehicle unparked successfully. Total fee: ${fee:.2f}"
 
     def get_parking_status(self) -> dict:
-        """Optional helper: Return current occupancy summary."""
+        """Return occupancy summary for API - with string keys."""
         status = {}
         for level in self.levels:
-            avail = level.get_available_count_by_type()
-            status[f"Level {level.level_id}"] = {
-                "total_spots": len(level.spots),
-                "available_by_type": avail,
-                "occupied": sum(1 for s in level.spots if s.is_occupied)
+            avail_raw = level.get_available_count_by_type()  # returns {SpotType: int}
+        
+            # Convert enum keys to strings
+            avail_str = {spot_type.name: count for spot_type, count in avail_raw.items()}
+            # or use .value if you prefer display names: {spot_type.value: count for ...}
+
+            status[f'level_{level.level_id}'] = {
+                'available_spots': avail_str,
+                'total_spots': len(level.spots),
+                'occupied_count': sum(1 for s in level.spots if s.is_occupied)
             }
         return status
