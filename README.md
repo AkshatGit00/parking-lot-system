@@ -1,7 +1,7 @@
 # Parking Lot Management System
 
 A clean, modular, and production-ready Low-Level Design (LLD) implementation of a **multi-level parking lot system** in Python.  
-Originally an in-memory OOP design, now enhanced with **SQLite persistence**, data integrity checks, and robust error handling — perfect for demonstrating full backend capabilities in coding interviews and software developer roles.
+Originally an in-memory OOP design, now enhanced with **SQLite persistence**, data integrity checks, a RESTful APIs and robust error handling — perfect for demonstrating full backend capabilities in coding interviews and software developer roles.
 
 ## Features
 
@@ -18,7 +18,7 @@ Originally an in-memory OOP design, now enhanced with **SQLite persistence**, da
 - **Persistent storage** using SQLite — parking state survives program restarts
 - Duplicate parking prevention — same license plate cannot be parked twice without unparking
 - Modular, OOP/SOLID-compliant design with type hints and separation of concerns
-- Console demo script (`main.py`) showing park/unpark flows and edge cases
+- REST API (Flask) for external access
 
 ## Project Structure
 ```python
@@ -31,7 +31,9 @@ parking_lot_system/
 ├── level.py                # Level class – manages spots on one floor
 ├── parking_lot.py          # Main ParkingLot class – coordinates everything
 ├── db.py                   # SQLite database layer (init, load, save park/unpark)
-main.py                     # Example usage & demo script (outside package)
+main.py                     # Example usage & Console demo script (outside package)
+app.py                      # API server demo script (outside package)
+requirement.txt             # Required package to run the API server demo script
 ```
 
 - `parking.db` — SQLite database file (auto-created on first run)
@@ -42,4 +44,14 @@ main.py                     # Example usage & demo script (outside package)
 - **Core Concepts**: OOP, SOLID principles, Type Hints, Exception Handling, Encapsulation
 - **Persistence**: SQLite (serverless, lightweight)
 - **Data Integrity**: UNIQUE constraint on license_plate, explicit duplicate checks
-- **Tools**: Git, modular package structure
+- **Tools**: Flask (REST API), Git, modular package structure
+
+## Run the project
+
+- Console demo:
+python main.py
+
+- API server:
+python app.py
+
+- Test with curl or Postman
